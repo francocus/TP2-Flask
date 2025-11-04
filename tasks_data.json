@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Estudiar Flask",
+    "description": "Revisar documentación y hacer ejemplos prácticos",
+    "completed": false,
+    "created_at": "2025-11-03T21:01:06.402121",
+    "completed_at": null
+  },
+  {
+    "id": 2,
+    "title": "Preparar presentación",
+    "description": "Crear diapositivas y código de ejemplo",
+    "completed": false,
+    "created_at": "2025-11-03T21:01:06.403005",
+    "completed_at": null
+  }
+]

@@ -1,3 +1,10 @@
+﻿venv/
 __pycache__/
 *.pyc
-tasks_data.json
+*.pyo
+*.pyd
+.env
+.env.*
+.DS_Store
+.vscode/
+*.sqlite3
