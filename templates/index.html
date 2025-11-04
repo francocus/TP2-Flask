@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestor de Tareas - Inicio{% endblock %}
+
+{% block head_extra %}
+    <style>
+        /* Page-specific additions */
+        .task-form { background: #f8f9fa; padding: 18px; border-radius: 10px; margin-bottom: 22px; }
+        .form-group { margin-bottom: 12px; }
+        label { display:block; margin-bottom:6px; color:#555; font-weight:700; }
+        input[type="text"], textarea { width:100%; padding:10px; border:2px solid #eee; border-radius:6px; }
+        input[type="text"]:focus, textarea:focus { border-color:#667eea; outline:none; }
+        textarea { min-height:80px; resize:vertical; }
+
+        .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:18px; }
+        .stat-card { background:#f8f9fa; border-radius:8px; padding:14px; border:1px solid #eee; text-align:center; }
+        .stat-value { font-size:1.6em; font-weight:700; }
+
+        .tasks-list { list-style:none; margin:0; padding:0; }
+        .task-item { background:#fff; border:1px solid #eee; border-radius:10px; padding:14px; margin-bottom:12px; }
+        .task-item.completed .task-title { text-decoration:line-through; color:#6c757d; }
+        .task-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+        .task-actions { display:flex; gap:8px; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="mb-2">
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-value">{{ stats.total }}</span>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">{{ stats.pending }}</span>
+                <div class="stat-label">Pendientes</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">{{ stats.completed }}</span>
+                <div class="stat-label">Completadas</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">{{ "{:.0f}%".format(stats.completion_rate) }}</span>
+                <div class="stat-label">Tasa</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="task-form">
+        <h2 class="mb-1">➕ Nueva Tarea</h2>
+        <form method="POST" action="{{ url_for('create_task') }}">
+            <div class="form-group">
+                <label for="title">Título*</label>
+                <input type="text" id="title" name="title" required placeholder="Ej: Estudiar Flask">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" placeholder="Detalles de la tarea..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Crear Tarea</button>
+        </form>
+    </div>
+
+    <h2 class="mb-2">📋 Mis Tareas</h2>
+
+    {% if tasks %}
+        <ul class="tasks-list">
+            {% for task in tasks %}
+                <li class="task-item {% if task.completed %}completed{% endif %}">
+                    <div class="task-header">
+                        <h3 class="task-title">{{ task.title }}</h3>
+                        <span class="task-status {% if task.completed %}status-completed{% else %}status-pending{% endif %}">
+                            {% if task.completed %}✓ Completada{% else %}○ Pendiente{% endif %}
+                        </span>
+                    </div>
+
+                    {% if task.description %}
+                        <p class="task-description">{{ task.description }}</p>
+                    {% endif %}
+
+                    <div class="task-meta mb-1">
+                        <span>Creada: {{ task.created_at.strftime('%d/%m/%Y %H:%M') }}</span>
+                        {% if task.completed_at %}
+                            <span> · Completada: {{ task.completed_at.strftime('%d/%m/%Y %H:%M') }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="task-actions">
+                        {% if not task.completed %}
+                            <form method="POST" action="{{ url_for('complete_task', task_id=task.id) }}">
+                                <button type="submit" class="btn btn-success">✓ Completar</button>
+                            </form>
+                        {% else %}
+                            <form method="POST" action="{{ url_for('reopen_task', task_id=task.id) }}">
+                                <button type="submit" class="btn btn-secondary">↩ Reabrir</button>
+                            </form>
+                        {% endif %}
+
+                        <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}" onsubmit="return confirm('¿Eliminar esta tarea?');">
+                            <button type="submit" class="btn btn-danger">🗑 Eliminar</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="empty-state center">
+            <h2>📭</h2>
+            <p>No hay tareas aún. ¡Crea tu primera tarea arriba!</p>
+        </div>
+    {% endif %}
+{% endblock %}

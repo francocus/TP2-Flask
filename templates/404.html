@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}404 - Página No Encontrada{% endblock %}
+
+{% block head_extra %}
+    <style>
+        .error-container { max-width:600px; padding:40px; text-align:center; border-radius:12px; }
+        .error-code { font-size:6rem; color:#667eea; font-weight:700; margin-bottom:12px; }
+        .error-title { font-size:1.6rem; margin-bottom:10px; }
+        .error-message { color:#666; margin-bottom:16px; }
+        .btn { padding:10px 18px; border-radius:6px; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Página No Encontrada</h1>
+        <p class="error-message">Lo sentimos, la página que buscas no existe o ha sido movida.</p>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}500 - Error Interno{% endblock %}
+
+{% block head_extra %}
+    <style>
+        .error-container { max-width:600px; padding:40px; text-align:center; border-radius:12px; }
+        .error-code { font-size:6rem; color:#dc3545; font-weight:700; margin-bottom:12px; }
+        .error-title { font-size:1.6rem; margin-bottom:10px; }
+        .error-message { color:#666; margin-bottom:16px; }
+        .btn { padding:10px 18px; border-radius:6px; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <h1 class="error-title">Error Interno del Servidor</h1>
+        <p class="error-message">Ha ocurrido un error inesperado en el servidor. Nuestro equipo ha sido notificado.</p>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+{% endblock %}
