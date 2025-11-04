@@ -15,7 +15,7 @@ El objetivo es demostrar conceptos de **Programación Orientada a Objetos (POO)*
 * Manejo de excepciones personalizadas
 * API REST básica para interacción externa
 
-## ⚙️ Instalación y ejecución
+##  Instalación y ejecución
 
 1. **Crear y activar entorno virtual**
 
@@ -70,5 +70,6 @@ TP2-Flask/
 
 ##  Autores
 
-Proyecto desarrollado por **Franco Cuscianna, Thiago Cuscianna, Agustin Angelini**
+Proyecto desarrollado por **Franco Cuscianna, Thiago Cuscianna, Agustin Angelini**.
+
 Materia: *Desarrollo Web con Flask* — **Tecnicatura Universitaria en Programación (UTN Rosario)**.
