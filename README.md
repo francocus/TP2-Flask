@@ -134,12 +134,3 @@ No hay tests automáticos en este proyecto por defecto, pero puedes comprobar qu
 ```powershell
 .\venv\Scripts\python.exe -c "import jinja2, os; env=jinja2.Environment(loader=jinja2.FileSystemLoader('templates')); print(env.list_templates())"
 ```
-
-## Contribuciones y mejoras sugeridas
-
-- Mover estilos a `static/css/style.css` y referenciar en `base.html`.
-- Añadir comandos Make/Task para tareas habituales.
-
----
-
-Si querés, puedo añadir un VS Code `launch.json` para iniciar la aplicación con F5, o crear un `requirements-dev.txt` con herramientas útiles. ¿Querés que lo haga?
