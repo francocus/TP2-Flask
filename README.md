@@ -1,11 +1,11 @@
 # Sistema de Gestión de Tareas (Flask)
 
-## 🧩 Descripción
+##  Descripción
 
 Este proyecto es una aplicación web sencilla desarrollada con **Flask** que permite gestionar tareas.
 El objetivo es demostrar conceptos de **Programación Orientada a Objetos (POO)** aplicados al desarrollo web con Python.
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
 * Crear tareas con título y descripción
 * Listar todas las tareas registradas
@@ -40,7 +40,7 @@ El objetivo es demostrar conceptos de **Programación Orientada a Objetos (POO)*
 
 ---
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 TP2-Flask/
@@ -59,7 +59,7 @@ TP2-Flask/
 
 ---
 
-## 🧠 Conceptos de POO aplicados
+##  Conceptos de POO aplicados
 
 * **Encapsulación:** La clase `Task` agrupa datos y comportamiento.
 * **Abstracción:** La clase `TaskManager` gestiona la lógica de negocio sin exponer detalles internos.
@@ -68,7 +68,7 @@ TP2-Flask/
 
 ---
 
-## 👨‍💻 Autor
+##  Autores
 
 Proyecto desarrollado por **Franco Cuscianna, Thiago Cuscianna, Agustin Angelini**
 Materia: *Desarrollo Web con Flask* — **Tecnicatura Universitaria en Programación (UTN Rosario)**.
